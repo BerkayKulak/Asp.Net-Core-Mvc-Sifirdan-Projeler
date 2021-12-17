@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BuildingForms.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BuildingForms.Controller
 {
@@ -17,13 +18,21 @@ namespace BuildingForms.Controller
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Categories = new SelectList(new List<string>()
+            {
+                "Telefon",
+                "Tablet",
+                "Laptop"
+            });
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Product product)
         {
-            return View();
+            ProductRepository.AddProduct(product);
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -31,7 +40,15 @@ namespace BuildingForms.Controller
         {
             // gelen q ile arama işlemleri yapılır
 
-            return View();
+            if (string.IsNullOrWhiteSpace(q))
+            {
+                return View();
+            }
+            else
+            {
+                return View("Index",ProductRepository.Products.Where(x=>x.Name.Contains(q)));
+            }
+            
         }
     }
 }
