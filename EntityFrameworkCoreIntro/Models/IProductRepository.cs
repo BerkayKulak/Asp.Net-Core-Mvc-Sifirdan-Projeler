@@ -8,5 +8,6 @@ namespace EntityFrameworkCoreIntro.Models
     public interface IProductRepository
     {
          IQueryable<Product> Products { get; }
+         void CreateProduct(Product product);
     }
 }
