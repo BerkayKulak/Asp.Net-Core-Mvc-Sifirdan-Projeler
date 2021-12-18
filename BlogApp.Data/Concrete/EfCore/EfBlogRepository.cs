@@ -35,6 +35,15 @@ namespace BlogApp.Data.Concrete.EfCore
 
         public void UpdateBlog(Blog entity)
         {
+            //var blog = GetById(entity.BlogId);
+            //if (blog != null)
+            //{
+            //    blog.Title = entity.Title;
+            //    blog.Description = entity.Description;
+            //    blog.CategoryId = entity.CategoryId;
+            //    blog.Image = entity.Image;
+                
+            //}
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
@@ -47,6 +56,24 @@ namespace BlogApp.Data.Concrete.EfCore
                 _context.Blogs.Remove(blog);
                 _context.SaveChanges();
             }
+        }
+
+        public void SaveBlog(Blog entity)
+        {
+            // ekleme yapıyor
+            if (entity.BlogId == 0)
+            {
+                entity.Date = DateTime.Now;
+                _context.Blogs.Add(entity);
+            }
+            // güncelleme yapıyor
+            else
+            {
+                _context.Entry(entity).State = EntityState.Modified;
+
+            }
+
+            _context.SaveChanges();
         }
     }
 }

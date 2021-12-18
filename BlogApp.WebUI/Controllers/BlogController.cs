@@ -31,47 +31,50 @@ namespace BlogApp.WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult AddOrUpdate(int? id)
         {
-            ViewBag.Categories = new SelectList(_categoryRepository.GetAll(),"CategoryId","Name");
+            ViewBag.Categories = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Name");
 
-            return View();
+            if (id == null)
+            {
+                // yeni bir kayıt 
+                
+                return View(new Blog());
+
+            }
+            else
+            {
+                // güncelleme
+                return View(_blogRepository.GetById((int)id));
+            }
         }
 
         [HttpPost]
-        public IActionResult Create(Blog blog)
+        public IActionResult AddOrUpdate(Blog entity)
         {
-            blog.Date = DateTime.Now;
             if (ModelState.IsValid)
             {
-                _blogRepository.AddBlog(blog);
+                _blogRepository.SaveBlog(entity);
+                TempData["message"] = $"{entity.Title} kayıt edildi";
                 return RedirectToAction("List");
             }
             ViewBag.Categories = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Name");
 
-            return View(blog);
+            return View(entity);
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Delete(int BlogId)
         {
-            ViewBag.Categories = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Name");
-
-            return View(_blogRepository.GetById(id));
+            return View(_blogRepository.GetById(BlogId));
         }
 
-        [HttpPost]
-        public IActionResult Edit(Blog blog)
+        [HttpPost,ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int BlogId)
         {
-            if (ModelState.IsValid)
-            {
-                _blogRepository.UpdateBlog(blog);
-                TempData["message"] = $"{blog.Title} güncellendi";
-                return RedirectToAction("List");
-            }
-            ViewBag.Categories = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Name");
-
-            return View(blog);
+            _blogRepository.DeleteBlog(blogId: BlogId);
+            TempData["message"] = $"{BlogId} numaralı kayıt silindi";
+            return RedirectToAction("List");
         }
     }
 }
