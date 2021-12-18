@@ -26,14 +26,18 @@ namespace BlogApp.WebUI.Controllers
         }
 
 
-        public IActionResult Index(int? id)
+        public IActionResult Index(int? id,string q)
         {
             var query = _blogRepository.GetAll().Where(i => i.isApproved);
            
             if (id != null)
             {
                 query = query.Where(i => i.CategoryId == id);
-                
+            }
+
+            if (!string.IsNullOrEmpty(q))
+            {
+                query = query.Where(i => i.Title.Contains(q) || i.Description.Contains(q) || i.Body.Contains(q));
             }
 
             return View(query.OrderByDescending(i => i.Date));
