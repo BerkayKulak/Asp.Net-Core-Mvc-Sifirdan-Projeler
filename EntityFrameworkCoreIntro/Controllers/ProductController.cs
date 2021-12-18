@@ -26,5 +26,20 @@ namespace EntityFrameworkCoreIntro.Controllers
             var products = _productRepository.Products;
             return View(products);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+            _productRepository.CreateProduct(product);
+            return RedirectToAction("List");
+        }
+
+
     }
 }
