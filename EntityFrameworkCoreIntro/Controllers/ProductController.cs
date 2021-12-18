@@ -40,6 +40,19 @@ namespace EntityFrameworkCoreIntro.Controllers
             return RedirectToAction("List");
         }
 
+        public IActionResult Details(int id)
+        {
+            return View(_productRepository.GetById(id));
+        }
+
+        [HttpPost]
+        public IActionResult Details(Product product)
+        {
+            _productRepository.UpdateProduct(product);
+            return RedirectToAction("List");
+        }
+
+
 
     }
 }

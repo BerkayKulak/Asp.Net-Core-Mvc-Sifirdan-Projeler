@@ -44,5 +44,15 @@ namespace EntityFrameworkCoreIntro.Models
         {
             throw new NotImplementedException();
         }
+
+        public Product GetById(int productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
