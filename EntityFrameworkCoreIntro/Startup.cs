@@ -30,7 +30,7 @@ namespace EntityFrameworkCoreIntro
             {
                 options.UseSqlServer((Configuration.GetConnectionString("DefaultConnection")));
             });
-            services.AddTransient<IProductRepository, FakeProductRepository>();
+            services.AddTransient<IProductRepository, EfProductRepository>();
             ;
             services.AddMvc();
         }
@@ -63,6 +63,8 @@ namespace EntityFrameworkCoreIntro
                     name: "default",
                     pattern: "{controller=Product}/{action=List}/{id?}");
             });
+
+            SeedData.Seed(app);
         }
     }
 }
