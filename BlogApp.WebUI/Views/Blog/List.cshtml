@@ -33,6 +33,9 @@
                             is Home
                         </th>
                         <th>
+                            is Slider
+                        </th>
+                        <th>
                             
                         </th>
                     </tr>
@@ -67,6 +70,18 @@
                             
                             <td>
                                 @if (item.isHome)
+                                {
+                                    <i class="fas fa-check"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-exclamation"></i>
+                                }
+
+                            </td>
+                            
+                            <td>
+                                @if (item.isSlider)
                                 {
                                     <i class="fas fa-check"></i>
                                 }

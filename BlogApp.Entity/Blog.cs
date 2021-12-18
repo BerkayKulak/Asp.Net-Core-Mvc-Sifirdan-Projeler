@@ -21,6 +21,8 @@ namespace BlogApp.Entity
 
         public bool isHome { get; set; }
 
+        public bool isSlider { get; set; }
+
         public int CategoryId { get; set; }
 
 
