@@ -52,6 +52,11 @@ namespace EntityFrameworkCoreIntro.Controllers
             return RedirectToAction("List");
         }
 
+        public IActionResult Delete(int id)
+        {
+            _productRepository.DeleteProduct(id);
+            return RedirectToAction("List");
+        }
 
 
     }
