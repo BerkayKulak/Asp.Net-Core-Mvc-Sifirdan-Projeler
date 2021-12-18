@@ -29,6 +29,9 @@
                             is Approved
                         </th>
                         <th>
+                            is Home
+                        </th>
+                        <th>
                             
                         </th>
                     </tr>
@@ -52,11 +55,23 @@
                             <td>
                                 @if (item.isApproved)
                                 {
-                                <i class="fas fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                 }
                                 else
                                 {
-                            <i class="fas fa-exclamation"></i>
+                                    <i class="fas fa-exclamation"></i>
+                                }
+
+                            </td>
+                            
+                            <td>
+                                @if (item.isHome)
+                                {
+                                    <i class="fas fa-check"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-exclamation"></i>
                                 }
 
                             </td>
