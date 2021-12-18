@@ -49,6 +49,7 @@ namespace EntityFrameworkCoreIntro.Models
                         Price = 400,
                         Category = "Kategori 4",
                     }
+                    
 
                 );
 
