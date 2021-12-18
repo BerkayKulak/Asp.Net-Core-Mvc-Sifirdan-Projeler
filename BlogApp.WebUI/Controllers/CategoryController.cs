@@ -30,7 +30,7 @@ namespace BlogApp.WebUI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(repository.GetAll());
+            return View();
         }
 
         [HttpPost]
