@@ -26,9 +26,18 @@ namespace BlogApp.WebUI.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            return View(_blogRepository.GetAll().Where(i=>i.isApproved).OrderByDescending(i=>i.Date));
+            var query = _blogRepository.GetAll().Where(i => i.isApproved);
+           
+            if (id != null)
+            {
+                query = query.Where(i => i.CategoryId == id);
+                
+            }
+
+            return View(query.OrderByDescending(i => i.Date));
+
         }
 
         public IActionResult List()
