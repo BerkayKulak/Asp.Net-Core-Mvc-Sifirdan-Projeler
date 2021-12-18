@@ -54,5 +54,10 @@ namespace EntityFrameworkCoreIntro.Models
         {
             throw new NotImplementedException();
         }
+
+        public void DeleteProduct(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
