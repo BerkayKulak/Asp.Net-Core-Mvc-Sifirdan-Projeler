@@ -21,6 +21,10 @@ namespace EntityFrameworkCoreIntro.Controllers
             return View();
         }
 
-        public IActionResult List() => View(_productRepository.Products);
+        public IActionResult List()
+        {
+            var products = _productRepository.Products;
+            return View(products);
+        }
     }
 }
