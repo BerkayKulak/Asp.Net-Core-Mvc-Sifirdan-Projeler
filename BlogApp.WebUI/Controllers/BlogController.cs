@@ -20,6 +20,12 @@ namespace BlogApp.WebUI.Controllers
             _categoryRepository = categoryRepository;
         }
 
+        public IActionResult Details(int id)
+        {
+            return View(_blogRepository.GetById(id));
+        }
+
+
         public IActionResult Index()
         {
             return View(_blogRepository.GetAll().Where(i=>i.isApproved).OrderByDescending(i=>i.Date));
