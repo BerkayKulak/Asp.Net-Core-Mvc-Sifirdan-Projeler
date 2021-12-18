@@ -27,22 +27,35 @@ namespace BlogApp.WebUI.Controllers
             return View(repository.GetAll());
         }
 
+      
+
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult AddOrUpdate(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return View(new Category());
+            }
+            else
+            {
+                return View(repository.GetById((int) id));
+            }
         }
 
         [HttpPost]
-        public IActionResult Create(Category category)
+        public IActionResult AddOrUpdate(Category category)
         {
-            
             if (ModelState.IsValid)
             {
-                repository.AddCategory(category);
+                repository.SaveCategory(category);
+                TempData["message"] = $"{category.Name} kayıt edildi";
                 return RedirectToAction("List");
             }
-            return View(category);
+            else
+            {
+                return View(category);
+            }
         }
+
     }
 }
