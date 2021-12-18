@@ -21,5 +21,16 @@ namespace EntityFrameworkCoreIntro.Models
             _context.SaveChanges();
             
         }
+
+        public Product GetById(int productId)
+        {
+            return _context.Products.FirstOrDefault(x => x.ProductId == productId);
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _context.Products.Update(product);
+            _context.SaveChanges();
+        }
     }
 }

@@ -9,5 +9,9 @@ namespace EntityFrameworkCoreIntro.Models
     {
          IQueryable<Product> Products { get; }
          void CreateProduct(Product product);
+         Product GetById(int productId);
+         void UpdateProduct(Product product);
+
+         void DeleteProduct(int id);
     }
 }
