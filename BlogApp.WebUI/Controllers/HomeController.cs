@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogApp.Data.Abstract;
+using BlogApp.WebUI.Models;
 
 namespace BlogApp.WebUI.Controllers
 {
@@ -18,8 +19,13 @@ namespace BlogApp.WebUI.Controllers
 
         public IActionResult Index()
         {
-            return View(_repository.GetAll().Where(i=>i.isApproved && i.isHome));
+            var model = new HomeBlogModel();
+            model.HomeBlogs = _repository.GetAll().Where(i => i.isApproved && i.isHome).ToList();
+            model.SliderBlogs = _repository.GetAll().Where(i => i.isApproved && i.isSlider).ToList();
+            return View(model);
         }
+
+
 
         public IActionResult List()
         {
