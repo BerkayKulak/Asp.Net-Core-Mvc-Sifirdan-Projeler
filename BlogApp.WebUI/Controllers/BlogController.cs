@@ -84,21 +84,26 @@ namespace BlogApp.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Blog entity,IFormFile file)
+        public async Task<IActionResult> Edit(Blog entity, IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img",file.FileName);
-
-                using (var stream = new FileStream(path,FileMode.Create))
+                if (file != null)
                 {
-                    await file.CopyToAsync(stream);
-                }
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", file.FileName);
 
-                entity.Image = file.FileName;
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                        entity.Image = file.FileName;
+
+                    }
+
+                }
                 _blogRepository.SaveBlog(entity);
                 TempData["message"] = $"{entity.Title} kayıt edildi";
                 return RedirectToAction("List");
+
             }
             ViewBag.Categories = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Name");
 
