@@ -35,5 +35,20 @@ namespace UrlRouting.Controllers
                 Action = "Newest"
             });
         }
+
+
+        public IActionResult Details()
+        {
+            var result = new Result()
+            {
+               Action = "Details",
+               Controller = "ProductController"
+
+            };
+
+            result.RouteData["Id"] = RouteData.Values["id"];
+            return View("MyView", result);
+
+        }
     }
 }
