@@ -18,7 +18,19 @@ namespace ModelBinding.Controllers
             this.repository = repository;
         }
 
-        public IActionResult Index(int id) => View(repository.Get(id));
+        public IActionResult Index(int? id)
+        {
+            Customer customer;
+            if (id.HasValue && (customer = repository.Get(id.Value)) != null)
+            {
+                return View(customer);
+            }
+            else
+            {
+                return NotFound();
+            }
+            return View();
+        }
 
 
 
