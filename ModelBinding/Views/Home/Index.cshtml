@@ -1,0 +1,32 @@
+﻿@model Customer
+@{
+    Layout = null;
+}
+
+!<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body class="m-1 p-1">
+    <table class="tabke table-bordered table-striped table-sm">
+        <tr>
+            <th>Customer Id</th>
+            <th>@Model.CustomerId</th>
+        </tr>
+        <tr>
+            <th>Fist Name</th>
+            <th>@Model.FirstName</th>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <th>@Model.LastName</th>
+        </tr>
+        <tr>
+            <th>Role</th>
+            <th>@Model.Role</th>
+        </tr>
+    </table>
+</body>
+</html>
