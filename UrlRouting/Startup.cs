@@ -51,6 +51,15 @@ namespace UrlRouting
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "catalog/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "Shop1",
+                    defaults: "shop/newest",
+                    pattern: "shop/{controller=Product}/{action=Index}/{id?}");
             });
         }
     }
