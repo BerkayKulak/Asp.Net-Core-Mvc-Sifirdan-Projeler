@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UrlRouting.Infrastructure;
 
 namespace UrlRouting
 {
@@ -59,6 +60,7 @@ namespace UrlRouting
                 endpoints.MapControllerRoute(
                     name: "Shop1",
                     defaults: "shop/newest",
+                    constraints: new {id=new WeekdayConstraint()},
                     pattern: "shop/{controller=Product}/{action=Index}/{id?}");
             });
         }
