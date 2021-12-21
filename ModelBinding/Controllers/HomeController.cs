@@ -32,6 +32,17 @@ namespace ModelBinding.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new Customer());
+        }
+
+        [HttpPost]
+        public IActionResult Create(Customer customer)
+        {
+            return View("Index",customer);
+        }
 
 
     }
