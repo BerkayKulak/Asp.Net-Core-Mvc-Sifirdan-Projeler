@@ -44,6 +44,11 @@ namespace ModelBinding.Controllers
             return View("Index",customer);
         }
 
+        public IActionResult Names(string[] names)
+        {
+            return View(names??new string[0]);
+        }
+
 
     }
 }

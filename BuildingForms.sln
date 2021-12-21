@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlRouting", "UrlRouting\Ur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBinding", "ModelBinding\ModelBinding.csproj", "{569BD0C9-9A38-4D3F-8F83-DEFD911B19E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelValidation", "ModelValidation\ModelValidation.csproj", "{12D48315-D916-4E63-BE4B-2B57E820A77C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{569BD0C9-9A38-4D3F-8F83-DEFD911B19E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{569BD0C9-9A38-4D3F-8F83-DEFD911B19E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{569BD0C9-9A38-4D3F-8F83-DEFD911B19E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12D48315-D916-4E63-BE4B-2B57E820A77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D48315-D916-4E63-BE4B-2B57E820A77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D48315-D916-4E63-BE4B-2B57E820A77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D48315-D916-4E63-BE4B-2B57E820A77C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
