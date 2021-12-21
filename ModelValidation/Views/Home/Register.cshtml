@@ -4,36 +4,45 @@
 }
 
 
+@section scripts{
 
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+        $(function() {
+            $("input.input-validation-error").closest("form-group").addClass("has-danger");
+        });
+    </script>
+}
 
 <div class="bg-primary text-white m-1 p-1">
     <h2>Register</h2>
 </div>
 
 <form class="p-1 m-1" asp-action="Register" method="post">
+    <div class="text-danger" asp-validation-summary="All"></div>
     <div class="form-group">
         <label asp-for="UserName">Username</label>
-        <input class="form-control" asp-for="UserName" />
+        <input class="form-control" asp-for="UserName"/>
     </div>
     <div class="form-group">
         <label asp-for="Email">Email</label>
-        <input class="form-control" asp-for="Email" />
+        <input class="form-control" asp-for="Email"/>
     </div>
     <div class="form-group">
         <label asp-for="Password">Password</label>
-        <input class="form-control" asp-for="Password" />
+        <input class="form-control" asp-for="Password"/>
     </div>
     <div class="form-group">
         <label asp-for="Birthdate">BirthDate</label>
-        <input type="text" class="form-control" asp-format="{0:d}" asp-for="Birthdate" />
+        <input type="text" class="form-control" asp-format="{0:d}" asp-for="Birthdate"/>
     </div>
     <div class="radio form-group">
 
-        <input asp-for="TermsAccepted" />
+        <input asp-for="TermsAccepted"/>
         <label asp-for="TermsAccepted" class="form-check-label">
             I Accept the terms and conditions
         </label>
     </div>
-    <input type="submit" class="btn btn-primary" value="Register" />
+    <input type="submit" class="btn btn-primary" value="Register"/>
 
 </form>

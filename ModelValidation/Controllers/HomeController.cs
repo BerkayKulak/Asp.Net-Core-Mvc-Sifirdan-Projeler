@@ -20,8 +20,42 @@ namespace ModelValidation.Controllers
         [HttpPost]
         public IActionResult Register(Register model)
         {
-            return View("Completed",model);
+            if (string.IsNullOrEmpty(model.UserName))
+            {
+                ModelState.AddModelError(nameof(model.UserName),"Username zorunlu bir alan");
+            }
+
+            if (string.IsNullOrEmpty(model.Email))
+            {
+                ModelState.AddModelError(nameof(model.Email),"Email Zorunlu alan");
+            }
+            else
+            {
+                if (!model.Email.Contains("@"))
+                {
+                    ModelState.AddModelError(nameof(model.Email), "Email Düzgün girilmemiş");
+                }
+            }
+
+            
+
+            if (!model.TermsAccepted)
+            {
+                ModelState.AddModelError(nameof(model.TermsAccepted),"Kullanımı koşullarını kabul etmelisiniz");
+            }
+
+            if (ModelState.IsValid)
+            {
+                return View("Completed", model);
+            }
+            else
+            {
+                return View(model);
+            }
+
         }
+
+
 
     }
 }
